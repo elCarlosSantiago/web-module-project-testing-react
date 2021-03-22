@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Loading from './Loading';
 import Show from './Show';
 
-import fetchShow from '../api/fetchShow';
+import { fetchShow } from '../api/fetchShow';
 
 const Display = (props) => {
   const [show, setShow] = useState(null);
@@ -15,14 +15,13 @@ const Display = (props) => {
       setShow(data);
 
       if (displayFunc) {
-        displayFunc();
+        displayFunc(data);
       }
     });
   };
 
   const handleSelect = (e) => {
     setSelectedSeason(e.target.value);
-    console.log('firedhandleselect');
   };
 
   return (
@@ -30,7 +29,7 @@ const Display = (props) => {
       <img
         className="poster-img"
         src="http://static.tvmaze.com/uploads/images/original_untouched/200/501942.jpg"
-        alt="header image"
+        alt="header-img"
       />
       <br />
       {!show ? (
